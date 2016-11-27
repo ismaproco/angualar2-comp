@@ -1,0 +1,16 @@
+<div class="query-container">
+  select values 
+  <br>
+  from:
+  <input type="text" name="from" [(ngModel)]="textFrom">
+  to:
+  <input type="text" name="to" [(ngModel)]="textTo">
+  <br>
+  {{textFrom}} - {{textTo}}
+</div>
+<div class="bids-container">
+  <div *ngFor="let item of bids">
+    <span class="value">{{item[0]}}</span>
+    <span class="amount {{item[2]}}">{{item[1]}}</span>
+  </div>
+</div>
