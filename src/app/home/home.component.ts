@@ -28,6 +28,7 @@ export class HomeComponent {
   bids: any[];
   textFrom: number = 0;
   textTo: number = 0;
+  numberResults: number = 0;
 
   // TypeScript public modifiers
   constructor(public appState: AppState, public title: Title, private http:Http) {
@@ -36,8 +37,6 @@ export class HomeComponent {
         .subscribe(data => {
           this.bids = data.bids;
           console.log(this.bids);
-
-          this.bids[4][2] = 'selected';
         },
         err => console.log(err),
         () => console.log('Completed'));
@@ -52,5 +51,28 @@ export class HomeComponent {
     console.log('submitState', value);
     this.appState.set('value', value);
     this.localState.value = '';
+  }
+
+  selectBids(){
+
+    // clear selected bids
+    this.bids.filter((bid) => {
+      return bid[2] == 'selected';
+      }).map((bid) => {
+          bid[2] ='';
+        });
+
+    // look for bids that fulfill the condition
+    let result = this.bids.filter((bid) => {
+        const _bid = parseFloat( bid[0] );
+        return _bid >= this.textFrom && _bid < this.textTo;
+      }).map( ( bid) => {
+          bid[2] = 'selected';
+          return bid;
+        });
+
+      this.numberResults = result.length;
+      
+      console.log(result);
   }
 }

@@ -5,12 +5,12 @@
   <input type="text" name="from" [(ngModel)]="textFrom">
   to:
   <input type="text" name="to" [(ngModel)]="textTo">
+  <input type="button" name="select" value="select" (click)="selectBids()">
   <br>
-  {{textFrom}} - {{textTo}}
+  Results found: {{numberResults}}
 </div>
 <div class="bids-container">
   <div *ngFor="let item of bids">
-    <span class="value">{{item[0]}}</span>
-    <span class="amount {{item[2]}}">{{item[1]}}</span>
+    <bid-component price="{{item[0]}}" amount="{{item[1]}}" selectedClass="{{item[2]}}"></bid-component>
   </div>
 </div>

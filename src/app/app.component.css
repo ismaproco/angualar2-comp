@@ -6,3 +6,28 @@ html, body{
 span.active {
   background-color: gray;
 }
+
+/*styles for home content only*/
+.query-container {
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+span {
+    display: inline-block;
+    width: 120px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.value {
+    background: #4C33FF;
+}
+
+.amount {
+    background: #33D4FF;
+}
+
+.selected {
+    background: #00ff00;
+}
